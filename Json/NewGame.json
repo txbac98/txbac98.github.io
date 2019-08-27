@@ -3,13 +3,13 @@
 		{
 			"id" : 0,
 			"url" : "google.com",
-			"icon" : "link",
+			"icon" : "https://image.shutterstock.com/image-photo/beautiful-water-drop-on-dandelion-260nw-789676552.jpg",
 			"title" : "new game"
 		},
 		{
 			"id": 1,
 			"url" : "google.com",
-			"icon" : "link",
+			"icon" : "https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
 			"title" : "new game"
 		}
 	]
