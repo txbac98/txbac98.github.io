@@ -4,13 +4,13 @@
 			"id" : 0,
 			"url" : "google.com",
 			"icon" : "link",
-			"title" : "new game",
+			"title" : "new game"
 		},
 		{
 			"id": 1,
 			"url" : "google.com",
 			"icon" : "link",
-			"title" : "new game",
+			"title" : "new game"
 		}
 	]
 	
