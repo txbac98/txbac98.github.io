@@ -2,15 +2,15 @@
 	"datas" : [
 		{
 			"id" : 0,
-			"url" : "google.com",
+			"url" : "https://www.google.com/",
 			"icon" : "https://image.shutterstock.com/image-photo/beautiful-water-drop-on-dandelion-260nw-789676552.jpg",
-			"title" : "new game"
+			"title" : "Game 1"
 		},
 		{
 			"id": 1,
-			"url" : "google.com",
+			"url" : "https://www.google.com/",
 			"icon" : "https://txbac98.github.io/Image/Me.jpg",
-			"title" : "new game"
+			"title" : "Game 2"
 		}
 	]
 	
