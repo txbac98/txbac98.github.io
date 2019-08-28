@@ -2,15 +2,15 @@
 	"datas" : [
 		{
 			"id" : 0,
-			"url" : "https://www.google.com/",
-			"icon" : "https://image.shutterstock.com/image-photo/beautiful-water-drop-on-dandelion-260nw-789676552.jpg",
-			"title" : "Game 1"
+			"url" : "https://play.google.com/store/apps/details?id=com.gg.solitaire.freecell",
+			"icon" : "https://txbac98.github.io/Image/NewGame/FreeCell.png",
+			"title" : "FreeCell"
 		},
 		{
 			"id": 1,
-			"url" : "https://www.google.com/",
-			"icon" : "https://txbac98.github.io/Image/Me.jpg",
-			"title" : "Game 2"
+			"url" : "https://play.google.com/store/apps/details?id=com.bano.jewel",
+			"icon" : "https://txbac98.github.io/Image/NewGame/Diamond.png",
+			"title" : "Diamond"
 		}
 	]
 	
