@@ -2,15 +2,15 @@
 	"datas" : [
 		{
 			"id" : 0,
-			"url" : "https://play.google.com/store/apps/details?id=gg.Solitaire.FreeCell.FreeCardGames",
-			"icon" : "https://txbac98.github.io/Image/NewGame/FreeCell.png",
-			"title" : "FreeCell"
+			"url" : "https://play.google.com/store/apps/details?id=com.Bano.PokerOffline.Free",
+			"icon" : "https://txbac98.github.io/Image/NewGame/Poker.png",
+			"title" : "Poker"
 		},
 		{
 			"id": 1,
-			"url" : "https://play.google.com/store/apps/details?id=bano.BlockPuzzle.BricksClassic",
-			"icon" : "https://txbac98.github.io/Image/NewGame/Bricks.png",
-			"title" : "Bricks"
+			"url" : "https://play.google.com/store/apps/details?id=bano.FruitSlotMachine.XengHoaQua",
+			"icon" : "https://txbac98.github.io/Image/NewGame/FruitSlot.png",
+			"title" : "Fruit Slot"
 		},
 		{
 			"id": 2,
