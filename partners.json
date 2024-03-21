@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Shopee",
+        "url": "shopee.vn",
+        "minCashback": 4,
+        "maxCashback": 20
+    },
+    {
+        "name": "Lazada",
+        "url": "lazada.vn",
+        "minCashback": 5,
+        "maxCashback": 12
+    }
+]
