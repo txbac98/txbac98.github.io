@@ -1,9 +1,950 @@
 <!doctype html>
-<html>
-  <head>
-    <title>This is the title of the webpage!</title>
-  </head>
-  <body>
-    <p>This is an example paragraph. Anything in the <strong>body</strong> tag will appear on the page, just like this <strong>p</strong> tag and its contents.</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Xuan Bac Tran — Unity Game Developer Portfolio</title>
+  <meta name="description" content="Unity Game Developer — shipped mobile & VR games. Gameplay systems, UI/UX polish, performance optimization, Addressables/DOTween, store-ready production." />
+
+  <style>
+    :root{
+      --bg:#070b16;
+      --card:rgba(255,255,255,.06);
+      --card2:rgba(255,255,255,.04);
+      --text:#eaf0ff;
+      --muted:#aab6da;
+      --line:rgba(255,255,255,.12);
+      --brand:#7aa7ff;
+      --brand2:#7dffda;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --r:20px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 18% 12%, rgba(122,167,255,.22), transparent 60%),
+        radial-gradient(1000px 650px at 85% 30%, rgba(125,255,218,.14), transparent 55%),
+        radial-gradient(900px 650px at 55% 95%, rgba(200,120,255,.10), transparent 55%),
+        var(--bg);
+      overflow-x:hidden;
+    }
+    a{color:inherit}
+    .wrap{max-width:1180px;margin:0 auto;padding:26px 18px 90px}
+    .topbar{
+      position:sticky;top:0;z-index:30;
+      padding:14px 0;
+      display:flex;align-items:center;justify-content:space-between;gap:14px;
+      backdrop-filter: blur(10px);
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .avatar{
+      width:44px;height:44px;border-radius:16px;
+      background: linear-gradient(135deg, rgba(122,167,255,.95), rgba(125,255,218,.75));
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      position:relative;overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+    }
+    .avatar:after{
+      content:"";
+      position:absolute;inset:-30px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.9), transparent 35%);
+      transform: rotate(18deg);
+      opacity:.35;
+    }
+    .brand h1{font-size:14px;line-height:1.2;margin:0}
+    .brand small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+    .nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+    .chip{
+      padding:10px 12px;border-radius:999px;
+      background: rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      text-decoration:none;
+      font-size:13px;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+      user-select:none;
+    }
+    .chip:hover{transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.18);}
+
+    .hero{
+      margin-top:12px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    @media (max-width: 920px){ .hero{grid-template-columns:1fr} .topbar{position:relative} }
+
+    .card{
+      border:1px solid var(--line);
+      border-radius: var(--r);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+    }
+    .heroL{padding:22px 22px 18px}
+    .kicker{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:12px;color:var(--muted);
+      padding:7px 10px;border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+    }
+    .dot{width:8px;height:8px;border-radius:99px;background: linear-gradient(135deg,var(--brand),var(--brand2)); box-shadow:0 0 18px rgba(122,167,255,.55)}
+    .headline{margin:14px 0 8px;font-size:34px;line-height:1.1;letter-spacing:-.02em}
+    .sub{margin:0 0 14px;color:var(--muted);font-size:15px;line-height:1.7;max-width:72ch}
+    .bullets{margin:0;padding-left:18px;color:var(--muted);line-height:1.7}
+    .bullets li{margin:6px 0}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:11px 14px;border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      text-decoration:none;
+      font-weight:700;font-size:14px;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.18);}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(122,167,255,.95), rgba(125,255,218,.70));
+      border-color: transparent;
+      color:#081226;
+    }
+
+    .heroR{padding:18px}
+    .info{
+      display:grid;gap:10px;
+      padding:14px;
+      background: rgba(0,0,0,.18);
+      border:1px solid var(--line);
+      border-radius: 16px;
+    }
+    .row{display:flex;justify-content:space-between;gap:12px;align-items:center}
+    .label{color:var(--muted);font-size:12px}
+    .value{font-size:13px;font-weight:800}
+    .stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .tag{
+      font-size:12px;color:rgba(233,238,252,.92);
+      padding:8px 10px;border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      white-space:nowrap;
+    }
+
+    section{margin-top:22px}
+    .sectionHead{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:26px 0 12px}
+    .sectionHead h2{margin:0;font-size:18px;letter-spacing:-.01em}
+    .sectionHead p{margin:0;color:var(--muted);font-size:13px;max-width:78ch}
+
+    /* Project layout */
+    .projects{display:grid;gap:14px}
+    .project{
+      padding:16px;
+      border-radius: var(--r);
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .project:before{
+      content:"";
+      position:absolute;inset:-1px;
+      background:
+        radial-gradient(900px 260px at 12% 10%, rgba(122,167,255,.14), transparent 45%),
+        radial-gradient(900px 260px at 85% 95%, rgba(125,255,218,.10), transparent 48%);
+      pointer-events:none;
+    }
+    .project > *{position:relative}
+
+    .pTop{
+      display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;
+      margin-bottom:10px;
+    }
+    .pTitle{display:flex;gap:12px;align-items:center;min-width:0}
+    .pTitle h3{margin:0;font-size:18px}
+    .meta{display:flex;flex-wrap:wrap;gap:8px;color:var(--muted);font-size:12px;margin-top:6px}
+    .pill{
+      padding:6px 10px;border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      white-space:nowrap;
+    }
+    .desc{margin:0;color:var(--muted);font-size:14px;line-height:1.7}
+    .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .alink{
+      font-size:13px;font-weight:800;
+      text-decoration:none;
+      padding:10px 12px;border-radius: 14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      display:inline-flex;align-items:center;gap:8px;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .alink:hover{transform: translateY(-1px); background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.18);}
+
+    /* BIG images */
+    .shots{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:12px;
+    }
+    @media (max-width: 920px){ .shots{grid-template-columns:1fr} }
+    .shot{
+      border-radius: 18px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.18);
+      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+      cursor: zoom-in;
+      position:relative;
+    }
+    .shot img{
+      width:100%;
+      display:block;
+      height: 360px;        /* BIG */
+      object-fit:cover;
+      filter:saturate(1.05);
+      transform: scale(1.001);
+    }
+    @media (max-width: 520px){ .shot img{height: 320px;} }
+    .shot:after{
+      content:"Click to zoom";
+      position:absolute;left:12px;bottom:10px;
+      font-size:12px;font-weight:800;
+      color: rgba(255,255,255,.92);
+      background: rgba(0,0,0,.45);
+      border:1px solid rgba(255,255,255,.18);
+      padding:6px 10px;border-radius:999px;
+      opacity:0;transform: translateY(4px);
+      transition: opacity .18s ease, transform .18s ease;
+      pointer-events:none;
+    }
+    .shot:hover:after{opacity:1;transform: translateY(0)}
+
+    .video{
+      margin-top:14px;
+      border-radius: 18px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.22);
+      aspect-ratio: 16/9;
+      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+    }
+    iframe{width:100%;height:100%;border:0;display:block}
+
+    /* Experience & skills */
+    .grid12{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+    .col6{grid-column:span 6}
+    .col12{grid-column:span 12}
+    @media(max-width: 920px){ .col6{grid-column:span 12} }
+
+    .tile{
+      padding:16px;
+      border-radius: var(--r);
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .tile:before{
+      content:"";
+      position:absolute;inset:-1px;
+      background:
+        radial-gradient(900px 260px at 12% 10%, rgba(122,167,255,.10), transparent 45%),
+        radial-gradient(900px 260px at 85% 95%, rgba(125,255,218,.08), transparent 48%);
+      pointer-events:none;
+    }
+    .tile > *{position:relative}
+    .tile h3{margin:0 0 6px;font-size:16px}
+    .fadeUp{opacity:0;transform: translateY(10px);transition: opacity .55s ease, transform .55s ease}
+    .fadeUp.show{opacity:1;transform: translateY(0)}
+
+    /* Lightbox */
+    .lb{
+      position:fixed;inset:0;
+      background: rgba(0,0,0,.75);
+      display:none;
+      z-index:100;
+      padding:18px;
+    }
+    .lb.show{display:grid;place-items:center}
+    .lbInner{
+      width:min(1100px, 96vw);
+      max-height: 92vh;
+      border-radius: 18px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow: 0 20px 80px rgba(0,0,0,.6);
+      background: rgba(0,0,0,.25);
+      position:relative;
+    }
+    .lbInner img{width:100%;height:100%;max-height:92vh;object-fit:contain;display:block;background: rgba(0,0,0,.35)}
+    .lbClose{
+      position:absolute;top:10px;right:10px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.45);
+      color:#fff;
+      padding:10px 12px;border-radius: 14px;
+      font-weight:900;
+      cursor:pointer;
+    }
+    .foot{
+      margin-top:24px;
+      padding:16px;
+      border-radius: var(--r);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size:12px;
+      line-height:1.7;
+    }
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 12px;
+      padding:2px 6px;border-radius:8px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.18);
+      color: rgba(233,238,252,.92);
+      white-space:nowrap;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <div class="avatar" aria-hidden="true"></div>
+        <div>
+          <h1>Xuan Bac Tran</h1>
+          <small>Unity Game Developer · Shipped Mobile & VR Games</small>
+        </div>
+      </div>
+      <nav class="nav" aria-label="Navigation">
+        <a class="chip" href="#projects">Projects</a>
+        <a class="chip" href="#experience">Experience</a>
+        <a class="chip" href="#skills">Skills</a>
+        <a class="chip" href="#contact">Contact</a>
+      </nav>
+    </div>
+
+    <div class="hero">
+      <div class="card heroL fadeUp">
+        <div class="kicker"><span class="dot" aria-hidden="true"></span> Ho Chi Minh City, Vietnam · Open to remote/onsite</div>
+        <div class="headline">Production-minded Unity developer — ship fast, polish hard, keep it stable.</div>
+        <p class="sub">
+          I’m a Unity Game Developer with 6+ years of hands-on experience building and shipping casual/puzzle games
+          and VR experiences. I focus on <b>clean gameplay systems</b>, <b>polished UI/UX</b>, and
+          <b>performance stability</b> so teams can iterate quickly and ship with confidence.
+        </p>
+        <ul class="bullets">
+          <li>Unity (C#) · DOTween · Addressables/AssetBundle · ScriptableObjects</li>
+          <li>Performance tuning (Jobs/Burst when needed), pooling, frame-time stability</li>
+          <li>Ads + analytics integrations (AdMob/Unity Ads/IronSource, Firebase)</li>
+          <li>Team delivery: Git workflows, Jira, mentoring/leading small squads</li>
+        </ul>
+        <div class="actions">
+          <a class="btn primary" href="#projects">View projects (new → old)</a>
+          <a class="btn" href="mailto:txbac196@gmail.com">Email</a>
+          <a class="btn" href="https://www.linkedin.com/in/tran-bac-32a005185/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="card heroR fadeUp">
+        <div class="info">
+          <div class="row"><div class="label">Email</div><div class="value">txbac196@gmail.com</div></div>
+          <div class="row"><div class="label">Phone</div><div class="value">(+84) 098 326 9050</div></div>
+          <div class="row"><div class="label">Location</div><div class="value">HCMC, Vietnam</div></div>
+          <div class="row"><div class="label">Focus</div><div class="value">Casual · Puzzle · VR · Production</div></div>
+        </div>
+        <div class="stack" aria-label="Highlights">
+          <span class="tag">Unity C#</span><span class="tag">DOTween</span><span class="tag">Addressables</span><span class="tag">Jobs/Burst</span>
+          <span class="tag">UI/UX + Animation</span><span class="tag">Ads + Analytics</span><span class="tag">Mentor/Lead</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECTS (NEW → OLD) -->
+    <section id="projects">
+      <div class="sectionHead">
+        <div>
+          <h2>Projects (new → old)</h2>
+          <p>Sorted from newest to oldest. Images are BIG and clickable (zoom).</p>
+        </div>
+      </div>
+
+      <div class="projects">
+        <!-- 2025-09 -->
+        <article class="project fadeUp">
+          <div class="pTop">
+            <div class="pTitle">
+              <div>
+                <h3>Cooking Blast 3D: Hexa Match</h3>
+                <div class="meta">
+                  <span class="pill">Puzzle / Match</span>
+                  <span class="pill">Project Lead</span>
+                  <span class="pill">Aug–Sep 2025</span>
+                </div>
+              </div>
+            </div>
+            <div class="meta">
+              <span class="pill">Unity · C#</span>
+              <span class="pill">UI/UX polish</span>
+              <span class="pill">Release builds</span>
+            </div>
+          </div>
+
+          <p class="desc">
+            A relaxing cooking-themed hex puzzle built around smooth drag controls, clean feedback, and satisfying clears.
+            I owned gameplay implementation, UI flow, and production readiness for store releases.
+          </p>
+
+          <div class="links">
+            <a class="alink" href="https://play.google.com/store/apps/details?id=com.pineapple.hexa.block.sort" target="_blank" rel="noopener">Google Play</a>
+            <a class="alink" href="https://apps.apple.com/us/app/cooking-blast-3d-hexa-match/id6746323854" target="_blank" rel="noopener">App Store</a>
+          </div>
+
+          <div class="shots">
+            <div class="shot"><img loading="lazy" src="https://play-lh.googleusercontent.com/vroIGGiEvGWjVJh8meJvncy2YWRi441TAOFWa-Ibfq_Nzl5JlD6f0Oce6c3QIfI7Kpfs30c791zNDdddyBve=w960-h540" alt="Cooking Blast screenshot 1"></div>
+            <div class="shot"><img loading="lazy" src="https://play-lh.googleusercontent.com/c-hsfd5TewSdT8OI1iyJkKGiFtK8OQntYPqpvfmy4mvEcOTyRPCvKpZsUSZjGpmRHls5zoOZzSAdlgOV1SYdfg=w960-h540" alt="Cooking Blast screenshot 2"></div>
+            <div class="shot"><img loading="lazy" src="https://play-lh.googleusercontent.com/JAhM-BQkqbzly30fdBcLdQNIFxEXsGwPQ3NqKPd2_L9sEfATaAGnPHOvFb6iUfmBkdc6_4SMMP9O6I04p4Y-qg=w960-h540" alt="Cooking Blast screenshot 3"></div>
+            <div class="shot"><img loading="lazy" src="https://play-lh.googleusercontent.com/1cX2pA9yR9fSxQ5V8YwqZ4p6g9eZ6PqUqE6r0y6c6W0y0W8pQ0z8y0o8tY0=w960-h540" alt="Cooking Blast screenshot 4 (may load if available)"></div>
+          </div>
+        </article>
+
+        <!-- 2025-08 -->
+        <article class="project fadeUp">
+          <div class="pTop">
+            <div class="pTitle">
+              <div>
+                <h3>Hole Collect</h3>
+                <div class="meta">
+                  <span class="pill">Casual</span>
+                  <span class="pill">Project Lead</span>
+                  <span class="pill">Jun–Aug 2025</span>
+                </div>
+              </div>
+            </div>
+            <div class="meta">
+              <span class="pill">Unity · C#</span>
+              <span class="pill">Optimization</span>
+              <span class="pill">Asset pipeline</span>
+            </div>
+          </div>
+
+          <p class="desc">
+            A black-hole collecting experience focused on smooth controls, satisfying feedback, and stable performance.
+            I led core gameplay, tuning, and release readiness.
+          </p>
+
+          <div class="links">
+            <a class="alink" href="https://apps.apple.com/us/app/hole-collect/id6748524047?l=vi" target="_blank" rel="noopener">App Store</a>
+            <a class="alink" href="https://play.google.com/store/apps/details?hl=en&id=com.ntt.hole.collect.objects" target="_blank" rel="noopener">Google Play</a>
+          </div>
+
+          <div class="shots">
+            <div class="shot"><img loading="lazy" src="https://play-lh.googleusercontent.com/ExPUbfox4XfdaExWrCja0MHXBd7NVUWlAct3ZBy8wY2YKmX1SjGC1OUiQaCdWUdRtuY_NgeDhUk6EvXLkrLdXw=w960-h540" alt="Hole Collect screenshot 1"></div>
+            <div class="shot"><img loading="lazy" src="https://play-lh.googleusercontent.com/RmTvbApB8e6qxaya8gWkQhDeelKKQc_Ft0UxdEXa-vz49XFoqqnGM4sbmJHuHPoDeaWMojiFC7QhtxV1wvPD=w960-h540" alt="Hole Collect screenshot 2"></div>
+            <div class="shot"><img loading="lazy" src="https://play-lh.googleusercontent.com/JqhxzhBeI-splRMZFfbH_4sSxbM40IidrM7mwWV7fnNwmGU_4vz4WqTZdpdpMmqHszS6OB63GDX3auin1wkXPw=w960-h540" alt="Hole Collect screenshot 3"></div>
+            <div class="shot"><img loading="lazy" src="https://play-lh.googleusercontent.com/8C8d7m8mHk0o5r9o8qQ7cQm0qV0z5xQ7m5g6c7z2d4w=w960-h540" alt="Hole Collect screenshot 4 (may load if available)"></div>
+          </div>
+        </article>
+
+        <!-- 2025 (iOS images local) -->
+        <article class="project fadeUp">
+          <div class="pTop">
+            <div class="pTitle">
+              <div>
+                <h3>Piggy Sort Master</h3>
+                <div class="meta">
+                  <span class="pill">Puzzle</span>
+                  <span class="pill">Puzzle Studio</span>
+                  <span class="pill">2025</span>
+                </div>
+              </div>
+            </div>
+            <div class="meta">
+              <span class="pill">Unity · C#</span>
+              <span class="pill">Interaction polish</span>
+              <span class="pill">UX clarity</span>
+            </div>
+          </div>
+
+          <p class="desc">
+            A fast sorting puzzle designed for short sessions: crisp UI feedback, satisfying clears, and smooth touch interactions.
+          </p>
+
+          <div class="links">
+            <a class="alink" href="https://apps.apple.com/kz/app/piggy-sort-master/id6746323371" target="_blank" rel="noopener">App Store</a>
+          </div>
+
+          <!-- Put your image here: assets/piggy-sort.png -->
+          <div class="shots">
+            <div class="shot"><img loading="lazy" src="assets/piggy-sort.png" alt="Piggy Sort screenshots (local)"></div>
+            <div class="shot"><img loading="lazy" src="assets/piggy-sort.png" alt="Piggy Sort screenshots (local)"></div>
+          </div>
+        </article>
+
+        <article class="project fadeUp">
+          <div class="pTop">
+            <div class="pTitle">
+              <div>
+                <h3>ColorNest: Puzzle Quest</h3>
+                <div class="meta">
+                  <span class="pill">Color/Hex Puzzle</span>
+                  <span class="pill">Puzzle Studio</span>
+                  <span class="pill">2025</span>
+                </div>
+              </div>
+            </div>
+            <div class="meta">
+              <span class="pill">Unity · C#</span>
+              <span class="pill">Combo satisfaction</span>
+              <span class="pill">Performance</span>
+            </div>
+          </div>
+
+          <p class="desc">
+            A color-based puzzle experience built around smooth flow and combo satisfaction, tuned for mobile session play.
+          </p>
+
+          <div class="links">
+            <a class="alink" href="https://apps.apple.com/kz/app/colornest-puzzle-quest/id6746540957" target="_blank" rel="noopener">App Store</a>
+          </div>
+
+          <!-- Put your image here: assets/colornest.png -->
+          <div class="shots">
+            <div class="shot"><img loading="lazy" src="assets/colornest.png" alt="ColorNest screenshots (local)"></div>
+            <div class="shot"><img loading="lazy" src="assets/colornest.png" alt="ColorNest screenshots (local)"></div>
+          </div>
+        </article>
+
+        <!-- 2025 -->
+        <article class="project fadeUp">
+          <div class="pTop">
+            <div class="pTitle">
+              <div>
+                <h3>Royal Block Picture Jam</h3>
+                <div class="meta">
+                  <span class="pill">Puzzle</span>
+                  <span class="pill">Project Lead</span>
+                  <span class="pill">2025</span>
+                </div>
+              </div>
+            </div>
+            <div class="meta">
+              <span class="pill">Unity · C#</span>
+              <span class="pill">Scalable level systems</span>
+              <span class="pill">UI/UX polish</span>
+            </div>
+          </div>
+
+          <p class="desc">
+            A puzzle title where clarity and “feel” drive retention: responsive interactions, clean feedback,
+            and production-ready systems for fast content delivery.
+          </p>
+
+          <div class="links">
+            <a class="alink" href="https://play.google.com/store/apps/details?id=com.pineapple.block.jam.picture.royal&hl=vi" target="_blank" rel="noopener">Google Play</a>
+          </div>
+
+          <div class="shots">
+            <div class="shot"><img loading="lazy" src="https://play-lh.googleusercontent.com/-txCAOdjA9lSjg3LZXW9J--nEL3o1LFp5iu4v_s62QMmVe4qHqhDpTj1rBV2mkua5_CHyutfPedXSAfUIlwCWg=w960-h540" alt="Royal Block screenshot 1"></div>
+            <div class="shot"><img loading="lazy" src="https://play-lh.googleusercontent.com/hRyDDKWvsaAp0KJMCQ1itRpSSxSqR4bOPiLNww9N6209Bv0qyv82DlCwgc3G3kSn1aQQxIT-OIU13W-p1MWiXA=w960-h540" alt="Royal Block screenshot 2"></div>
+            <div class="shot"><img loading="lazy" src="https://play-lh.googleusercontent.com/06PbiH5PRGsaQDfQbF3bHhZbDsb1crel7MoP8BZ9Xl398pGfEl3PHRDmoQHSw5B1CVTSCnRYN1t__EOFwCuC=w960-h540" alt="Royal Block screenshot 3"></div>
+            <div class="shot"><img loading="lazy" src="https://play-lh.googleusercontent.com/Qe1yQmQm0m1Aq0n6m0q9m9cQm0x9m0cQm0=w960-h540" alt="Royal Block screenshot 4 (may load if available)"></div>
+          </div>
+        </article>
+
+        <!-- Freelance (newly added) -->
+        <article class="project fadeUp">
+          <div class="pTop">
+            <div class="pTitle">
+              <div>
+                <h3>Grill Sizzle Fever: BBQ Sort & Match (Freelance)</h3>
+                <div class="meta">
+                  <span class="pill">Sort / Match Puzzle</span>
+                  <span class="pill">Freelance</span>
+                  <span class="pill">2024–2025</span>
+                </div>
+              </div>
+            </div>
+            <div class="meta">
+              <span class="pill">Unity · C#</span>
+              <span class="pill">Gameplay + UX polish</span>
+              <span class="pill">Mobile sessions</span>
+            </div>
+          </div>
+
+          <p class="desc">
+            A sorting/match puzzle built for quick, satisfying clears and readable board states.
+            I supported gameplay implementation and interaction polish to keep the loop smooth and addictive.
+          </p>
+
+          <div class="links">
+            <a class="alink" href="https://play.google.com/store/apps/details?id=com.tasty.skewer.bbq.sort.match" target="_blank" rel="noopener">Google Play</a>
+          </div>
+
+          <div class="shots">
+            <div class="shot"><img loading="lazy" src="https://play-lh.googleusercontent.com/d_xlIhsqWqr4io4vgYBzS0tNA67bflJsSCGCY0IcwnT6IKpT3eib6k_eSaUfmTfQPhHkjQv5JKE3rUKZtfjT2g=w960-h540" alt="BBQ Sort screenshot 1"></div>
+            <div class="shot"><img loading="lazy" src="https://play-lh.googleusercontent.com/S5ZLHl7hqsVj5ejyQ97ZLz5M0A6TqZQT1M92YmE70DV44cFC-7eXhqZe9jUdhsTA5ku62soSPq4tc63p6IRdVQ=w960-h540" alt="BBQ Sort screenshot 2"></div>
+            <div class="shot"><img loading="lazy" src="https://play-lh.googleusercontent.com/OdWYuzLLUkdY9yp190MpxHHma6UWqjuRMwYmOUEo39g1_3msOzyStaIvIJ4wJq8SWoYrYlew86rWCLNLKFV-9w=w960-h540" alt="BBQ Sort screenshot 3"></div>
+            <div class="shot"><img loading="lazy" src="https://play-lh.googleusercontent.com/rYbS_ZFf6PZzrzPgD7JF4hxCiDYuv1qpAgxrUibWCEFnEvapTr-2Z53YhjbpPTFMInKYXFhAJOAJK8ZqGPRv=w960-h540" alt="BBQ Sort screenshot 4"></div>
+          </div>
+        </article>
+
+        <!-- Older freelance -->
+        <article class="project fadeUp">
+          <div class="pTop">
+            <div class="pTitle">
+              <div>
+                <h3>Water Sort Puzzle (Freelance)</h3>
+                <div class="meta">
+                  <span class="pill">Puzzle</span>
+                  <span class="pill">Freelance</span>
+                  <span class="pill">2024</span>
+                </div>
+              </div>
+            </div>
+            <div class="meta">
+              <span class="pill">Unity · C#</span>
+              <span class="pill">Level scale</span>
+              <span class="pill">Interaction clarity</span>
+            </div>
+          </div>
+
+          <p class="desc">
+            A relaxing puzzle loop with minimal UI and a huge level runway. I supported gameplay logic, UI flow,
+            and interaction polish for clean, readable moves.
+          </p>
+
+          <div class="links">
+            <a class="alink" href="https://play.google.com/store/apps/details?hl=vi&id=com.ecgame.app.watersort" target="_blank" rel="noopener">Google Play</a>
+          </div>
+
+          <div class="shots">
+            <div class="shot"><img loading="lazy" src="https://play-lh.googleusercontent.com/XErhs0Jk3pcA5hGczvBKrinZGu2d19L58dCyUr-inNFvn3tlb31gMH3EWZHSLhPXAg=w960-h540" alt="Water Sort screenshot 1"></div>
+            <div class="shot"><img loading="lazy" src="https://play-lh.googleusercontent.com/n66Cd6vdxv7iRxlCKzXM1NJCVLyloQrscaZtA_ABRjDjQXQL_05WjumFhVbY49hY6C2g=w960-h540" alt="Water Sort screenshot 2"></div>
+            <div class="shot"><img loading="lazy" src="https://play-lh.googleusercontent.com/_2jnd4QLyAHgXmATB-SCfptzk-xvd8CKr5wZLAN_uENCm4dDJOYCy5xrx18wYrt0TQ=w960-h540" alt="Water Sort screenshot 3"></div>
+            <div class="shot"><img loading="lazy" src="https://play-lh.googleusercontent.com/0b0c0c0c0c0c0c0c0c0=w960-h540" alt="Water Sort screenshot 4 (may load if available)"></div>
+          </div>
+        </article>
+
+        <!-- Sky Mavis videos (older) -->
+        <article class="project fadeUp">
+          <div class="pTop">
+            <div class="pTitle">
+              <div>
+                <h3>Axie Tiny Drift (Sky Mavis)</h3>
+                <div class="meta">
+                  <span class="pill">Gameplay systems</span>
+                  <span class="pill">Addressables</span>
+                  <span class="pill">2024</span>
+                </div>
+              </div>
+            </div>
+            <div class="meta">
+              <span class="pill">Mentored 2 juniors</span>
+              <span class="pill">Production stability</span>
+            </div>
+          </div>
+
+          <p class="desc">
+            Drift-focused gameplay where responsiveness and feedback are key.
+            I contributed to gameplay systems and stability-oriented components for reliable iteration.
+          </p>
+
+          <div class="links">
+            <a class="alink" href="https://www.youtube.com/watch?v=GmdDReQazeY" target="_blank" rel="noopener">YouTube</a>
+          </div>
+
+          <div class="video" aria-label="Axie Tiny Drift video">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/GmdDReQazeY"
+              title="Axie Tiny Drift"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+        </article>
+
+        <article class="project fadeUp">
+          <div class="pTop">
+            <div class="pTitle">
+              <div>
+                <h3>Axie Culinary War (Sky Mavis)</h3>
+                <div class="meta">
+                  <span class="pill">Gameplay + UI flow</span>
+                  <span class="pill">Addressables</span>
+                  <span class="pill">2023</span>
+                </div>
+              </div>
+            </div>
+            <div class="meta">
+              <span class="pill">Iteration speed</span>
+              <span class="pill">Stability</span>
+            </div>
+          </div>
+
+          <p class="desc">
+            A fast satisfying loop built for content iteration. I supported gameplay systems, UI flow, and stability-focused modules.
+          </p>
+
+          <div class="links">
+            <a class="alink" href="https://www.youtube.com/watch?v=JI781Q3P-fo" target="_blank" rel="noopener">YouTube</a>
+          </div>
+
+          <div class="video" aria-label="Axie Culinary War video">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/JI781Q3P-fo"
+              title="Axie Culinary War"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+        </article>
+
+        <!-- Cosina (older) -->
+        <article class="project fadeUp">
+          <div class="pTop">
+            <div class="pTitle">
+              <div>
+                <h3>8 Ball Clash: Pool Billiards (Cosina Games)</h3>
+                <div class="meta">
+                  <span class="pill">UI / Animation / Effects</span>
+                  <span class="pill">Google Play</span>
+                  <span class="pill">Older title</span>
+                  <span class="pill">10M+ downloads</span>
+                </div>
+              </div>
+            </div>
+            <div class="meta">
+              <span class="pill">Unity · DOTween</span>
+              <span class="pill">Live update support</span>
+            </div>
+          </div>
+
+          <p class="desc">
+            Competitive billiards experience focused on “feel”: readable aim feedback, snappy UI, and satisfying VFX.
+            I contributed to UI implementation, animations, and visual feedback for production updates.
+          </p>
+
+          <div class="links">
+            <a class="alink" href="https://play.google.com/store/apps/details?id=com.fc.pool.live.billiards&hl=vi" target="_blank" rel="noopener">Google Play</a>
+          </div>
+
+          <div class="shots">
+            <div class="shot"><img loading="lazy" src="https://play-lh.googleusercontent.com/A8fuUEeouI4xeAL4DmNKAV8nUa7FKJ3Cqodw3G0jCzX5isfFzMulIMxlNpS2XzikmQ=w960-h540" alt="8 Ball Clash screenshot 1"></div>
+            <div class="shot"><img loading="lazy" src="https://play-lh.googleusercontent.com/6ijPh2Lx0O28xbM50OVu7eoKOH-m4-HSkUMgcqUmM1v0Z72TzEYaorwIrICmD2GFNQ=w960-h540" alt="8 Ball Clash screenshot 2"></div>
+            <div class="shot"><img loading="lazy" src="https://play-lh.googleusercontent.com/NVp7Q0is-Mpd_K2yDkRJQlntBZvFQlTng4bg0lJObtXGTw9gPGBP7w-OsXDebAX_ZEU=w960-h540" alt="8 Ball Clash screenshot 3"></div>
+            <div class="shot"><img loading="lazy" src="https://play-lh.googleusercontent.com/0a0a0a0a0a0a0a0a0a0=w960-h540" alt="8 Ball Clash screenshot 4 (may load if available)"></div>
+          </div>
+        </article>
+
+        <article class="project fadeUp">
+          <div class="pTop">
+            <div class="pTitle">
+              <div>
+                <h3>Cooking Life: Kitchen Diary (Cosina / Art Ocean)</h3>
+                <div class="meta">
+                  <span class="pill">Time-management Cooking</span>
+                  <span class="pill">Google Play</span>
+                  <span class="pill">Older title</span>
+                </div>
+              </div>
+            </div>
+            <div class="meta">
+              <span class="pill">Unity · DOTween</span>
+              <span class="pill">Gameplay + UI</span>
+            </div>
+          </div>
+
+          <p class="desc">
+            Fast-paced cooking loop where pacing and clarity matter: upgrades, shop flow, and one-hand-friendly UI.
+            I contributed to gameplay logic, UI systems, animations, and effects.
+          </p>
+
+          <div class="links">
+            <a class="alink" href="https://play.google.com/store/apps/details?id=com.artsocean.cookinglife&hl=vi" target="_blank" rel="noopener">Google Play</a>
+          </div>
+
+          <div class="shots">
+            <div class="shot"><img loading="lazy" src="https://play-lh.googleusercontent.com/oXy4Ktv2RedTItUzigbEGvopDyQG8IG_zOH8bs_ag03ErkFff9H7U0lJRNsf7LfwBw=w960-h540" alt="Cooking Life screenshot 1"></div>
+            <div class="shot"><img loading="lazy" src="https://play-lh.googleusercontent.com/aqN5i0F0KBrROB5YlpD2GRZkRT7N0y5P_gf6pyajGV4hr2gRkk_3JgHL1Z0m9hsmMdQ=w960-h540" alt="Cooking Life screenshot 2"></div>
+            <div class="shot"><img loading="lazy" src="https://play-lh.googleusercontent.com/-aGbRmxJFR7zvoGMyIZuvNsgzKGgTyiClXLG4HfHuL0KwsNkdACGKMJ0iic1fcc2CxI=w960-h540" alt="Cooking Life screenshot 3"></div>
+            <div class="shot"><img loading="lazy" src="https://play-lh.googleusercontent.com/0d0d0d0d0d0d0d0d0d0=w960-h540" alt="Cooking Life screenshot 4 (may load if available)"></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="sectionHead">
+        <div>
+          <h2>Work Experience</h2>
+          <p>High-level summary (production impact, iteration speed, stability).</p>
+        </div>
+      </div>
+
+      <div class="grid12">
+        <article class="tile col6 fadeUp">
+          <h3>Puzzle Studio — Game Developer / Project Lead</h3>
+          <div class="meta">
+            <span class="pill">Apr 2025 – Present</span>
+            <span class="pill">Puzzle/Casual</span>
+            <span class="pill">Production</span>
+          </div>
+          <p class="desc">
+            Led puzzle/casual projects with a production-first approach: scalable systems for content drops,
+            clean UX, performance tuning when needed, and reliable release builds.
+          </p>
+        </article>
+
+        <article class="tile col6 fadeUp">
+          <h3>Freelance — Global Game Studios</h3>
+          <div class="meta">
+            <span class="pill">Dec 2024 – Apr 2025</span>
+            <span class="pill">VR · RTS · Multiplayer</span>
+          </div>
+          <p class="desc">
+            Delivered milestone-based features across different genres and pipelines: gameplay modules,
+            UI flows, optimization, and stable device-ready builds.
+          </p>
+        </article>
+
+        <article class="tile col6 fadeUp">
+          <h3>Sky Mavis — Game Developer</h3>
+          <div class="meta">
+            <span class="pill">Mar 2023 – Nov 2024</span>
+            <span class="pill">Axie ecosystem · SDK</span>
+            <span class="pill">VR (Meta Quest)</span>
+          </div>
+          <p class="desc">
+            Core contributor to games and builder tooling. Worked on gameplay systems, asset/build pipelines,
+            and stability features. Mentored 2 junior developers in a production project.
+          </p>
+        </article>
+
+        <article class="tile col6 fadeUp">
+          <h3>Cosina Games — Co-founder / Game Developer</h3>
+          <div class="meta">
+            <span class="pill">Jul 2018 – Jul 2022</span>
+            <span class="pill">Team leadership (6)</span>
+            <span class="pill">UI/UX · Animation</span>
+          </div>
+          <p class="desc">
+            Full-cycle game development: gameplay logic, UI/UX implementation, animations/VFX, and production support.
+            Coordinated a small team to ship and maintain multiple titles.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="sectionHead">
+        <div>
+          <h2>Skills Snapshot</h2>
+          <p>Strongest in production Unity: fast iteration, maintainable architecture, and shipping quality.</p>
+        </div>
+      </div>
+
+      <div class="grid12">
+        <article class="tile col6 fadeUp">
+          <h3>Unity / C#</h3>
+          <div class="meta">
+            <span class="pill">Gameplay systems</span><span class="pill">UI flow</span><span class="pill">Tools for iteration</span>
+          </div>
+          <p class="desc">DOTween, Addressables/AssetBundles, ScriptableObjects, async patterns, pooling, clean architecture basics.</p>
+        </article>
+        <article class="tile col6 fadeUp">
+          <h3>Performance / Production</h3>
+          <div class="meta">
+            <span class="pill">Jobs/Burst (when needed)</span><span class="pill">Frame-time stability</span><span class="pill">Release builds</span>
+          </div>
+          <p class="desc">Profiling mindset, stable memory usage, scalable content pipelines, CI/CD build workflows, store-ready delivery.</p>
+        </article>
+        <article class="tile col12 fadeUp">
+          <h3>Monetization & Analytics</h3>
+          <div class="meta">
+            <span class="pill">AdMob</span><span class="pill">Unity Ads</span><span class="pill">IronSource</span><span class="pill">Firebase Analytics</span>
+          </div>
+          <p class="desc">SDK integration, event tracking, and production troubleshooting to keep monetization stable across builds.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="sectionHead">
+        <div>
+          <h2>Contact</h2>
+          <p>Open to Unity roles (casual/puzzle/VR). Strong fit for fast shipping + stable production.</p>
+        </div>
+      </div>
+
+      <div class="tile fadeUp">
+        <h3>Let’s build something players love.</h3>
+        <p class="desc">
+          Email: <a href="mailto:txbac196@gmail.com">txbac196@gmail.com</a> ·
+          Phone: <a href="tel:+84983269050">(+84) 098 326 9050</a> ·
+          LinkedIn: <a href="https://www.linkedin.com/in/tran-bac-32a005185/" target="_blank" rel="noopener">tran-bac-32a005185</a>
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lb" id="lb" aria-hidden="true">
+    <div class="lbInner">
+      <button class="lbClose" id="lbClose" aria-label="Close">✕</button>
+      <img id="lbImg" alt="Zoomed screenshot" />
+    </div>
+  </div>
+
+  <script>
+    // reveal animation
+    const els = document.querySelectorAll('.fadeUp');
+    const io = new IntersectionObserver((entries)=>{
+      for (const e of entries){
+        if (e.isIntersecting){
+          e.target.classList.add('show');
+          io.unobserve(e.target);
+        }
+      }
+    }, {threshold:.12});
+    els.forEach(el=>io.observe(el));
+
+    // lightbox
+    const lb = document.getElementById('lb');
+    const lbImg = document.getElementById('lbImg');
+    const lbClose = document.getElementById('lbClose');
+
+    function openLb(src, alt){
+      lbImg.src = src;
+      lbImg.alt = alt || "Screenshot";
+      lb.classList.add('show');
+      lb.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLb(){
+      lb.classList.remove('show');
+      lb.setAttribute('aria-hidden','true');
+      lbImg.src = '';
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.shot img').forEach(img=>{
+      img.addEventListener('click', ()=> openLb(img.currentSrc || img.src, img.alt));
+    });
+    lbClose.addEventListener('click', closeLb);
+    lb.addEventListener('click', (e)=>{ if(e.target === lb) closeLb(); });
+    window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeLb(); });
+  </script>
+</body>
 </html>
