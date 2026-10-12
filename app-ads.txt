@@ -854,3 +854,6 @@ kidoz.net, 14260, RESELLER, a109366414b7335e
 triplelift.com, 14798, RESELLER, 6c33edb13117fd86
 triplelift.com, 14705-EB, RESELLER
 appnexus.com, 17779, RESELLER
+bigo.sg,j2j4d9hqou,DIRECT
+conversantmedia.com, 101349, RESELLER, 03113cd04947736d
+krushmedia.com, AJxF6R719a9M6CaTvK, RESELLER
