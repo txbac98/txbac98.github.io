@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy — 5Easy Games</title>
+  <meta name="description" content="Privacy Policy for 5Easy Games mobile applications.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='black'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial,sans-serif' font-size='44' font-weight='900' fill='white'%3E5%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --text: #f8fbff;
+      --muted: #b8c7dc;
+      --line: rgba(255, 255, 255, 0.16);
+      --card: rgba(255, 255, 255, 0.08);
+      --blue: #65d8ff;
+      --green: #9cffbf;
+      --yellow: #ffe66d;
+      --pink: #ff8ac6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 18% 18%, rgba(101, 216, 255, 0.34), transparent 30%),
+        radial-gradient(circle at 82% 22%, rgba(255, 138, 198, 0.24), transparent 28%),
+        radial-gradient(circle at 50% 92%, rgba(156, 255, 191, 0.18), transparent 34%),
+        linear-gradient(145deg, #071020 0%, #121c3b 52%, #080d1b 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: -40%;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 52px 52px;
+      transform: rotate(8deg);
+      mask-image: radial-gradient(circle, black 0%, transparent 72%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: min(980px, calc(100% - 32px));
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 24px 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+    }
+
+    .logo {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      color: #071020;
+      background: linear-gradient(135deg, var(--yellow), var(--green), var(--blue));
+      box-shadow: 0 16px 38px rgba(101, 216, 255, 0.25);
+    }
+
+    .back-link {
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.07);
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 800;
+      transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+    }
+
+    .back-link:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.13);
+      color: var(--text);
+    }
+
+    main {
+      flex: 1;
+      padding: 54px 0 36px;
+    }
+
+    .policy-card {
+      padding: clamp(28px, 6vw, 62px);
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), var(--card));
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.36);
+      backdrop-filter: blur(18px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.06);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 18px var(--green);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.7rem, 7vw, 5.8rem);
+      line-height: 0.98;
+      letter-spacing: -0.08em;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #ffffff 0%, var(--blue) 38%, var(--green) 76%, #ffffff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 18px 42px rgba(101, 216, 255, 0.24));
+    }
+
+    .updated {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .intro {
+      max-width: 760px;
+      margin: 28px 0 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .contents {
+      margin: 34px 0 42px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .contents strong {
+      display: block;
+      margin-bottom: 14px;
+      color: var(--text);
+    }
+
+    .contents ol {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 9px 24px;
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .contents a {
+      color: var(--blue);
+    }
+
+    .contents a:hover {
+      color: var(--green);
+    }
+
+    section {
+      scroll-margin-top: 24px;
+      margin-top: 38px;
+      padding-top: 8px;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      color: var(--text);
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      letter-spacing: -0.04em;
+    }
+
+    h3 {
+      margin: 24px 0 10px;
+      color: #eaf4ff;
+      font-size: 1.08rem;
+    }
+
+    p,
+    li {
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    ul {
+      margin: 10px 0 18px;
+      padding-left: 24px;
+    }
+
+    li::marker {
+      color: var(--green);
+    }
+
+    .contact-box {
+      margin-top: 24px;
+      padding: 20px 22px;
+      border: 1px solid rgba(156, 255, 191, 0.28);
+      border-radius: 22px;
+      background: rgba(156, 255, 191, 0.08);
+    }
+
+    .contact-box a {
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    footer {
+      padding: 20px 0 8px;
+      color: rgba(248, 251, 255, 0.66);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .policy-card {
+        border-radius: 26px;
+      }
+
+      .contents ol {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <a class="brand" href="/" aria-label="5Easy Games home">
+        <span class="logo">5E</span>
+        <span>5Easy Games</span>
+      </a>
+      <a class="back-link" href="/">Back to home</a>
+    </header>
+
+    <main>
+      <article class="policy-card">
+        <div class="eyebrow"><span class="dot" aria-hidden="true"></span> Your privacy matters</div>
+        <h1><span class="gradient-text">Privacy Policy</span></h1>
+        <p class="updated">Last updated: October 31, 2026</p>
+        <p class="intro">This Privacy Policy describes the policies and procedures of 5Easy Games regarding the collection, use, and disclosure of information when you use our mobile applications. It also explains your privacy rights and how applicable law protects you.</p>
+        <p class="intro">We use Personal Data to provide and improve our applications. By using our applications, you agree to the collection and use of information in accordance with this Privacy Policy.</p>
+
+        <nav class="contents" aria-label="Table of contents">
+          <strong>Table of Contents</strong>
+          <ol>
+            <li><a href="#definitions">Interpretation and Definitions</a></li>
+            <li><a href="#collection">Collecting and Using Your Personal Data</a></li>
+            <li><a href="#use">Use of Your Personal Data</a></li>
+            <li><a href="#purchases">In-App Purchases</a></li>
+            <li><a href="#advertising">Advertising and Analytics</a></li>
+            <li><a href="#retention">Data Retention</a></li>
+            <li><a href="#transfers">Data Transfers</a></li>
+            <li><a href="#deletion">Deletion of Your Data</a></li>
+            <li><a href="#disclosure">Disclosure of Your Data</a></li>
+            <li><a href="#security">Security</a></li>
+            <li><a href="#children">Children’s Privacy</a></li>
+            <li><a href="#links">Links to Other Sites</a></li>
+            <li><a href="#changes">Changes to This Policy</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ol>
+        </nav>
+
+        <section id="definitions">
+          <h2>Interpretation and Definitions</h2>
+          <h3>Interpretation</h3>
+          <p>Words with capitalized initial letters have defined meanings under the following conditions. The following definitions have the same meaning whether they appear in singular or plural.</p>
+          <h3>Definitions</h3>
+          <p>For the purposes of this Privacy Policy:</p>
+          <ul>
+            <li><strong>Application</strong> refers to the mobile applications provided by 5Easy Games.</li>
+            <li><strong>Company</strong> (referred to as “the Company”, “We”, “Us”, or “Our”) refers to 5Easy Games, based in Vietnam.</li>
+            <li><strong>Device</strong> means any device that can access the Service, such as a smartphone, tablet, or computer.</li>
+            <li><strong>Personal Data</strong> is any information that relates to an identified or identifiable individual.</li>
+            <li><strong>Service</strong> refers to our Applications.</li>
+            <li><strong>Service Provider</strong> means any third-party entity that processes data on behalf of the Company.</li>
+            <li><strong>Usage Data</strong> refers to data collected automatically when using the Service.</li>
+            <li><strong>You</strong> means the individual using the Service or the entity on behalf of which such individual is using the Service.</li>
+          </ul>
+        </section>
+
+        <section id="collection">
+          <h2>Collecting and Using Your Personal Data</h2>
+          <h3>Types of Data Collected</h3>
+          <h3>Usage Data</h3>
+          <p>Usage Data is collected automatically during your use of the Service. This may include:</p>
+          <ul>
+            <li>Device’s IP address</li>
+            <li>Device model and operating system version</li>
+            <li>Application version</li>
+            <li>Time spent in-app and actions taken</li>
+            <li>Advertising ID, such as IDFA or GAID</li>
+            <li>Crash logs and performance data</li>
+            <li>Network provider, language, and region information</li>
+          </ul>
+          <p>We may also collect mobile device identifiers and diagnostic information to improve performance and stability.</p>
+        </section>
+
+        <section id="use">
+          <h2>Use of Your Personal Data</h2>
+          <p>We may use collected data for the following purposes:</p>
+          <ul>
+            <li>To provide and maintain our Service</li>
+            <li>To monitor and analyze usage and trends</li>
+            <li>To serve, optimize, and personalize advertisements</li>
+            <li>To improve application functionality and user experience</li>
+            <li>To communicate updates, bug fixes, or technical notices</li>
+            <li>To comply with legal obligations</li>
+          </ul>
+        </section>
+
+        <section id="purchases">
+          <h2>In-App Purchases</h2>
+          <p>Our Applications may offer in-app purchases for additional content, features, or virtual items.</p>
+          <ul>
+            <li>Payments for in-app purchases are processed by the applicable app store platform. We do not directly collect or store your payment information.</li>
+            <li>The processing of payments and related personal information is handled according to the applicable app store’s privacy policy.</li>
+            <li>We may receive anonymized purchase confirmation data, such as transaction ID, item type, currency, and amount, to verify transactions and deliver purchased content.</li>
+          </ul>
+        </section>
+
+        <section id="advertising">
+          <h2>Advertising and Analytics</h2>
+          <p>Our Applications use third-party services for advertising and analytics, including but not limited to:</p>
+          <ul>
+            <li>Firebase Analytics for analytics and performance monitoring</li>
+            <li>Firebase Crashlytics for error and crash reporting</li>
+            <li>AppLovin MAX Mediation for ad mediation</li>
+            <li>Mintegral for advertising</li>
+            <li>Unity Ads for advertising</li>
+          </ul>
+          <p>These third-party services may use cookies, device identifiers, or similar tracking technologies to personalize ads, measure performance, and analyze usage. You can limit or reset advertising identifiers in your device settings.</p>
+        </section>
+
+        <section id="retention">
+          <h2>Data Retention</h2>
+          <p>We retain your data only as long as necessary for the purposes described in this Privacy Policy or as required by applicable law.</p>
+        </section>
+
+        <section id="transfers">
+          <h2>Data Transfers</h2>
+          <p>Your information may be processed or stored outside of your country. By using the Service, you consent to this transfer.</p>
+        </section>
+
+        <section id="deletion">
+          <h2>Deletion of Your Data</h2>
+          <p>You may request deletion of your personal data by contacting us using the email address below. Some data may need to be retained for legal or operational reasons.</p>
+        </section>
+
+        <section id="disclosure">
+          <h2>Disclosure of Your Data</h2>
+          <p>We may disclose your data in the following circumstances:</p>
+          <ul>
+            <li>To service providers, including analytics and advertising partners</li>
+            <li>In connection with a merger, acquisition, or sale of assets</li>
+            <li>To comply with legal obligations</li>
+            <li>With your prior consent</li>
+          </ul>
+        </section>
+
+        <section id="security">
+          <h2>Security</h2>
+          <p>We use commercially reasonable measures to protect your data. However, no method of transmission or storage is 100% secure.</p>
+        </section>
+
+        <section id="children">
+          <h2>Children’s Privacy</h2>
+          <p>Our Services are not directed to children under 13. We do not knowingly collect personal information from children. If we discover such data, we will take steps to delete it.</p>
+        </section>
+
+        <section id="links">
+          <h2>Links to Other Sites</h2>
+          <p>Our Service may contain links to third-party websites. We are not responsible for their content or privacy practices.</p>
+        </section>
+
+        <section id="changes">
+          <h2>Changes to This Policy</h2>
+          <p>We may update this Privacy Policy from time to time. Continued use of the Service constitutes acceptance of the updated terms.</p>
+        </section>
+
+        <section id="contact">
+          <h2>Contact Us</h2>
+          <p>If you have any questions or concerns about this Privacy Policy, please contact us:</p>
+          <div class="contact-box">
+            <a href="mailto:hello@5easy.games">hello@5easy.games</a>
+          </div>
+        </section>
+      </article>
+    </main>
+
+    <footer>© 2026 5Easy Games. All rights reserved.</footer>
+  </div>
+</body>
+</html>
