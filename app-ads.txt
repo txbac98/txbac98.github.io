@@ -1,3 +1,4 @@
+ca-app-pub-3499189332367395/2094370705
 toponad.com, a97ea354c30b3f81bb48062e66afeb28, DIRECT, 1d49fe424a1a456d
 adagio.io, 1050, RESELLER
 admanmedia.com, 2433, RESELLER
